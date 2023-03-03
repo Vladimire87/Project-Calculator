@@ -18,10 +18,6 @@ function operate(operator, a, b) {
   return operator(a, b);
 }
 
-let display = document.getElementsByClassName("insideDisplay");
-display = display[0].textContent;
-console.log(display);
-
 const buttons = {
   clear: document.getElementById("clear"),
   divide: document.getElementById("divide"),
@@ -43,10 +39,16 @@ const buttons = {
 };
 
 const isTouchDevice = "ontouchstart" in document.documentElement;
+let display = document.getElementsByClassName("insideDisplay");
+let number = document.createElement("span");
+let aperand = "";
 
 Object.keys(buttons).forEach((key) => {
   const button = buttons[key];
   button.addEventListener(isTouchDevice ? "touchstart" : "click", () => {
-    console.log(buttons[key]);
+    aperand += buttons[key].textContent;
+    display[0].innerHTML = aperand;
   });
 });
+
+// display = display[0].textContent;
