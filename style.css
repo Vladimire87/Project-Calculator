@@ -6,6 +6,7 @@ body {
 
 .container {
   max-width: 960px;
+  margin: auto;
 }
 
 h1 {
