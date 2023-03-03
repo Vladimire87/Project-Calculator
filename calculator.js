@@ -41,13 +41,13 @@ const buttons = {
 const isTouchDevice = "ontouchstart" in document.documentElement;
 let display = document.getElementsByClassName("insideDisplay");
 let number = document.createElement("span");
-let aperand = "";
+let operand = "";
 
 Object.keys(buttons).forEach((key) => {
   const button = buttons[key];
   button.addEventListener(isTouchDevice ? "touchstart" : "click", () => {
-    aperand += buttons[key].textContent;
-    display[0].innerHTML = aperand;
+    operand += buttons[key].textContent;
+    display[0].innerHTML = operand;
   });
 });
 
