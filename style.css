@@ -106,7 +106,6 @@ button:active {
   width: 61px;
   height: 49px;
   border-radius: 0px 0px 10px 0px;
-  border: 1px solid black;
 }
 
 .numbers {
@@ -116,5 +115,4 @@ button:active {
 .zero {
   border-radius: 0px 0px 0px 10px;
   width: 118px;
-  border: 1px solid black;
 }
