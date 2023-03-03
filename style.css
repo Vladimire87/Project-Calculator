@@ -12,8 +12,9 @@ body {
   background-color: #464646;
   width: 238px;
   height: 325px;
-  border-radius: 10px;
-  border: 1px solid black;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  outline: 1px solid black;
   /* box-shadow: 0 8px 8px -4px red; */
 }
 
