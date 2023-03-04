@@ -3,49 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
-      name="viewport"
-      content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
+      http-equiv="cache-control"
+      content="no-cache, no-store, must-revalidate"
     />
-    <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="expires" content="0" />
     <meta http-equiv="pragma" content="no-cache" />
-    <script src="calculator.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
     <title>Project: Calculator</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Project: Calculator</h1>
-    <div class="container">
-      <div class="rectangle">
-        <div class="display"><span class="insideDisplay">0123456789</span></div>
-        <div class="rectangleButtons">
-          <button class="clear" id="clear">Clear</button>
-          <button class="divide operator" id="divide">÷</button>
-          <button class="seven numbers" id="seven">7</button>
-          <button class="eight numbers" id="eight">8</button>
-          <button class="nine numbers" id="nine">9</button>
-          <button class="multiply operator" id="multiply">×</button>
-          <button class="four numbers" id="four">4</button>
-          <button class="five numbers" id="five">5</button>
-          <button class="six numbers" id="six">6</button>
-          <button class="subtract operator" id="subtract">-</button>
-          <button class="one numbers" id="one">1</button>
-          <button class="two numbers" id="two">2</button>
-          <button class="three numbers" id="three">3</button>
-          <button class="add operator" id="add">+</button>
-          <button class="zero numbers" id="zero">0</button>
-          <button class="comma numbers" id="comma">.</button>
-          <button class="equals operator" id="equals">=</button>
+    <header>
+      <h1>Project: Calculator</h1>
+    </header>
+    <main>
+      <div class="container">
+        <div class="rectangle">
+          <div class="display"><span class="insideDisplay">0</span></div>
+          <div class="rectangleButtons">
+            <button class="clear" id="clear">Clear</button>
+            <button class="divide operator" id="divide">÷</button>
+            <button class="seven numbers" id="seven">7</button>
+            <button class="eight numbers" id="eight">8</button>
+            <button class="nine numbers" id="nine">9</button>
+            <button class="multiply operator" id="multiply">×</button>
+            <button class="four numbers" id="four">4</button>
+            <button class="five numbers" id="five">5</button>
+            <button class="six numbers" id="six">6</button>
+            <button class="subtract operator" id="subtract">-</button>
+            <button class="one numbers" id="one">1</button>
+            <button class="two numbers" id="two">2</button>
+            <button class="three numbers" id="three">3</button>
+            <button class="add operator" id="add">+</button>
+            <button class="zero numbers" id="zero">0</button>
+            <button class="comma numbers" id="comma">.</button>
+            <button class="equals operator" id="equals">=</button>
+          </div>
         </div>
       </div>
-      <footer>
-        <a
-          href="https://github.com/Vladimire87/Project-Calculator"
-          target="_blank"
-          >Project: Calculator GitHub Vladimir Egorov 2023
-        </a>
-      </footer>
-    </div>
+    </main>
+    <footer>
+      <a
+        href="https://github.com/Vladimire87/Project-Calculator"
+        target="_blank"
+        >Project: Calculator GitHub Vladimir Egorov 2023
+      </a>
+    </footer>
+    <script defer src="calculator.js"></script>
   </body>
 </html>

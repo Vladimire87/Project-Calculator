@@ -66,7 +66,7 @@ operatorButtons.forEach((button) => {
           result = parseFloat(firstNumber) / parseFloat(secondNumber);
           break;
       }
-      display.textContent = `${firstNumber} ${operator} ${secondNumber} = ${result}`;
+      display.textContent = `${result}`;
       // Store the result as the first number and reset the second number and operator
       firstNumber = result.toString();
       secondNumber = null;
