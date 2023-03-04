@@ -9,6 +9,11 @@ display.textContent = "0";
 let numberButtons = document.querySelectorAll(".numbers");
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
+    if (operator === "=") {
+      operator = null;
+      firstNumber = null;
+      secondNumber = null;
+    }
     if (operator === null) {
       // If no operator has been selected, add the number to the first number variable
       if (firstNumber === null) {
@@ -26,7 +31,7 @@ numberButtons.forEach((button) => {
         secondNumber += button.textContent;
       }
       // Update the display with the current second number
-      display.textContent = secondNumber;
+      display.textContent = firstNumber + operator + secondNumber;
     }
   });
 });
@@ -45,14 +50,14 @@ clearButton.addEventListener("click", () => {
 let operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    if (firstNumber === null) {
+    if ((firstNumber === null && secondNumber === null) || operator === "=") {
       return;
     }
 
     if (firstNumber !== null && secondNumber === null) {
       // If the first number has been selected but not the second, store the selected operator and update the display
       operator = button.textContent;
-      display.textContent = firstNumber + operator;
+      display.textContent = firstNumber;
     } else if (firstNumber !== null && secondNumber !== null) {
       // If both numbers and an operator have been selected, calculate the result and update the display
       let result;
@@ -74,7 +79,12 @@ operatorButtons.forEach((button) => {
           result = parseFloat(firstNumber) / parseFloat(secondNumber);
           break;
       }
-      display.textContent = `${result}`;
+      if (result.toString().length > 11) {
+        display.textContent = result.toFixed(7);
+      } else {
+        display.textContent = result;
+      }
+      // display.textContent = result;
       // Store the result as the first number and reset the second number and operator
       firstNumber = result.toString();
       secondNumber = null;
@@ -86,7 +96,7 @@ operatorButtons.forEach((button) => {
 // Add event listener to the equals button
 let equalsButton = document.querySelector("#equals");
 equalsButton.addEventListener("click", () => {
-  if (firstNumber === null) {
+  if ((firstNumber === null && secondNumber === null) || operator === "=") {
     return;
   }
 
@@ -114,7 +124,7 @@ equalsButton.addEventListener("click", () => {
     display.textContent = result;
     // Store the result as the first number and reset the second number and operator
     firstNumber = result.toString();
-    secondNumber = null;
+    // secondNumber = null;
     operator = null;
   }
 });
