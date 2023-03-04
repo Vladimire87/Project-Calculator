@@ -45,6 +45,10 @@ clearButton.addEventListener("click", () => {
 let operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((button) => {
   button.addEventListener("click", () => {
+    if (firstNumber === null) {
+      return;
+    }
+
     if (firstNumber !== null && secondNumber === null) {
       // If the first number has been selected but not the second, store the selected operator and update the display
       operator = button.textContent;
@@ -63,6 +67,10 @@ operatorButtons.forEach((button) => {
           result = parseFloat(firstNumber) * parseFloat(secondNumber);
           break;
         case "÷":
+          if (secondNumber === "0") {
+            display.textContent = "ERROR:";
+            break;
+          }
           result = parseFloat(firstNumber) / parseFloat(secondNumber);
           break;
       }
@@ -78,6 +86,10 @@ operatorButtons.forEach((button) => {
 // Add event listener to the equals button
 let equalsButton = document.querySelector("#equals");
 equalsButton.addEventListener("click", () => {
+  if (firstNumber === null) {
+    return;
+  }
+
   if (firstNumber !== null && secondNumber !== null) {
     // If both numbers have been selected, calculate the result and update the display
     let result;
@@ -92,6 +104,10 @@ equalsButton.addEventListener("click", () => {
         result = parseFloat(firstNumber) * parseFloat(secondNumber);
         break;
       case "÷":
+        if (secondNumber === "0") {
+          display.textContent = "ERROR:";
+          break;
+        }
         result = parseFloat(firstNumber) / parseFloat(secondNumber);
         break;
     }
