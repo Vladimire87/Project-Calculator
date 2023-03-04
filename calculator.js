@@ -1,58 +1,104 @@
-function add(a, b) {
-  return a + b;
-}
-
-function subtract(a, b) {
-  return a - b;
-}
-
-function multiply(a, b) {
-  return a * b;
-}
-
-function divide(a, b) {
-  return a / b;
-}
-
-function operate(operator, a, b) {
-  return operator(a, b);
-}
-
-const buttons = {
-  clear: document.getElementById("clear"),
-  divide: document.getElementById("divide"),
-  seven: document.getElementById("seven"),
-  eight: document.getElementById("eight"),
-  nine: document.getElementById("nine"),
-  multiply: document.getElementById("multiply"),
-  four: document.getElementById("four"),
-  five: document.getElementById("five"),
-  six: document.getElementById("six"),
-  subtract: document.getElementById("subtract"),
-  one: document.getElementById("one"),
-  two: document.getElementById("two"),
-  three: document.getElementById("three"),
-  add: document.getElementById("add"),
-  zero: document.getElementById("zero"),
-  comma: document.getElementById("comma"),
-  equals: document.getElementById("equals"),
-};
-
-const isTouchDevice = "ontouchstart" in document.documentElement;
+// Store variables for the calculator's display and the currently selected operator and numbers
 let display = document.querySelector(".insideDisplay");
-let number1 = "";
-let number2 = "";
-let operator = "";
-display.innerText = 0;
-Object.keys(buttons).forEach((key) => {
-  const button = buttons[key];
-  button.addEventListener(isTouchDevice ? "touchstart" : "click", () => {
-    if (operator === "") {
-      number1 += buttons[key].textContent;
-    }
+let operator = null;
+let firstNumber = null;
+let secondNumber = null;
+display.textContent = "0";
 
-    display.innerText = number1 + operator + number2;
+// Add event listeners to all the number buttons
+let numberButtons = document.querySelectorAll(".numbers");
+numberButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (operator === null) {
+      // If no operator has been selected, add the number to the first number variable
+      if (firstNumber === null) {
+        firstNumber = button.textContent;
+      } else {
+        firstNumber += button.textContent;
+      }
+      // Update the display with the current first number
+      display.textContent = firstNumber;
+    } else {
+      // If an operator has been selected, add the number to the second number variable
+      if (secondNumber === null) {
+        secondNumber = button.textContent;
+      } else {
+        secondNumber += button.textContent;
+      }
+      // Update the display with the current second number
+      display.textContent = secondNumber;
+    }
   });
 });
 
-// display = display[0].textContent;
+// Add event listener to the clear button
+let clearButton = document.querySelector("#clear");
+clearButton.addEventListener("click", () => {
+  // Reset all variables and clear the display
+  operator = null;
+  firstNumber = null;
+  secondNumber = null;
+  display.textContent = "0";
+});
+
+// Add event listeners to all the operator buttons
+let operatorButtons = document.querySelectorAll(".operator");
+operatorButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (firstNumber !== null && secondNumber === null) {
+      // If the first number has been selected but not the second, store the selected operator and update the display
+      operator = button.textContent;
+      display.textContent = firstNumber + operator;
+    } else if (firstNumber !== null && secondNumber !== null) {
+      // If both numbers and an operator have been selected, calculate the result and update the display
+      let result;
+      switch (operator) {
+        case "+":
+          result = parseFloat(firstNumber) + parseFloat(secondNumber);
+          break;
+        case "-":
+          result = parseFloat(firstNumber) - parseFloat(secondNumber);
+          break;
+        case "×":
+          result = parseFloat(firstNumber) * parseFloat(secondNumber);
+          break;
+        case "÷":
+          result = parseFloat(firstNumber) / parseFloat(secondNumber);
+          break;
+      }
+      display.textContent = `${firstNumber} ${operator} ${secondNumber} = ${result}`;
+      // Store the result as the first number and reset the second number and operator
+      firstNumber = result.toString();
+      secondNumber = null;
+      operator = button.textContent;
+    }
+  });
+});
+
+// Add event listener to the equals button
+let equalsButton = document.querySelector("#equals");
+equalsButton.addEventListener("click", () => {
+  if (firstNumber !== null && secondNumber !== null) {
+    // If both numbers have been selected, calculate the result and update the display
+    let result;
+    switch (operator) {
+      case "+":
+        result = parseFloat(firstNumber) + parseFloat(secondNumber);
+        break;
+      case "-":
+        result = parseFloat(firstNumber) - parseFloat(secondNumber);
+        break;
+      case "×":
+        result = parseFloat(firstNumber) * parseFloat(secondNumber);
+        break;
+      case "÷":
+        result = parseFloat(firstNumber) / parseFloat(secondNumber);
+        break;
+    }
+    display.textContent = result;
+    // Store the result as the first number and reset the second number and operator
+    firstNumber = result.toString();
+    secondNumber = null;
+    operator = null;
+  }
+});
