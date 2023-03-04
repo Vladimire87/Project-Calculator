@@ -39,15 +39,19 @@ const buttons = {
 };
 
 const isTouchDevice = "ontouchstart" in document.documentElement;
-let display = document.getElementsByClassName("insideDisplay");
-let number = document.createElement("span");
-let operand = "";
-
+let display = document.querySelector(".insideDisplay");
+let number1 = "";
+let number2 = "";
+let operator = "";
+display.innerText = 0;
 Object.keys(buttons).forEach((key) => {
   const button = buttons[key];
   button.addEventListener(isTouchDevice ? "touchstart" : "click", () => {
-    operand += buttons[key].textContent;
-    display[0].innerHTML = operand;
+    if (operator === "") {
+      number1 += buttons[key].textContent;
+    }
+
+    display.innerText = number1 + operator + number2;
   });
 });
 

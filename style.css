@@ -28,7 +28,7 @@ h1 {
   height: 50px;
   display: flex;
   padding: 12px;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   color: white;
   letter-spacing: 0.02em;
