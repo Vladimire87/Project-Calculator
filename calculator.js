@@ -14,11 +14,15 @@ numberButtons.forEach((button) => {
       firstNumber = null;
       secondNumber = null;
     }
+
     if (operator === null) {
       // If no operator has been selected, add the number to the first number variable
       if (firstNumber === null) {
         firstNumber = button.textContent;
       } else {
+        if (firstNumber.includes(".") && button.textContent === ".") {
+          return;
+        }
         firstNumber += button.textContent;
       }
       // Update the display with the current first number
@@ -28,6 +32,9 @@ numberButtons.forEach((button) => {
       if (secondNumber === null) {
         secondNumber = button.textContent;
       } else {
+        if (secondNumber.includes(".") && button.textContent === ".") {
+          return;
+        }
         secondNumber += button.textContent;
       }
       // Update the display with the current second number
