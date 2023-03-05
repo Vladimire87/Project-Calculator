@@ -23,6 +23,9 @@ numberButtons.forEach((button) => {
         if (firstNumber.includes(".") && button.textContent === ".") {
           return;
         }
+        if (firstNumber.length > 10) {
+          return;
+        }
         firstNumber += button.textContent;
       }
       // Update the display with the current first number
@@ -35,10 +38,13 @@ numberButtons.forEach((button) => {
         if (secondNumber.includes(".") && button.textContent === ".") {
           return;
         }
+        if (secondNumber.length > 10) {
+          return;
+        }
         secondNumber += button.textContent;
       }
       // Update the display with the current second number
-      display.textContent = firstNumber + operator + secondNumber;
+      display.textContent = secondNumber;
     }
   });
 });
