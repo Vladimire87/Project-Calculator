@@ -16,6 +16,8 @@ body {
 
 h1 {
   text-align: center;
+  padding: 3em;
+  font-family: monospace;
 }
 
 .rectangle {
