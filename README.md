@@ -1,3 +1,6 @@
+# Live
+https://vladimire87.github.io/Project-Calculator/
+
 # Project: Calculator
 
 This project is a simple calculator web application that allows users to perform basic arithmetic operations such as addition, subtraction, multiplication, and division. The application has been implemented using HTML, CSS, and JavaScript.
