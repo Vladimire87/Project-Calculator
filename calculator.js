@@ -71,6 +71,7 @@ operatorButtons.forEach((button) => {
       // If the first number has been selected but not the second, store the selected operator and update the display
       operator = button.textContent;
       display.textContent = firstNumber;
+      display.textContent = button.textContent;
     } else if (firstNumber !== null && secondNumber !== null) {
       // If both numbers and an operator have been selected, calculate the result and update the display
       let result;
